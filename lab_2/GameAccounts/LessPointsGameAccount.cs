@@ -11,7 +11,7 @@ namespace lab_2.GameAccounts
                 int rating = 1;//ініціалізуємо початковий рейтинг
                 foreach (var item in gameList)//цикл проходу по всіх іграх, в яких брав участь користувач
                 {
-                    if (item.WinnerAccount.UserName.Equals(UserName))//якщо перемога додаємо до поточного рейтингу рейтинг гри
+                    if (item.WinnerAccount.Equals(this))//якщо перемога додаємо до поточного рейтингу рейтинг гри
                     {
                         rating += item.GameRate;
                     }
