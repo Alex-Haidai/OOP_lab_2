@@ -27,18 +27,11 @@ namespace lab_2.GameAccounts
                 {
                     if (item.WinnerAccount.Equals(this))//якщо перемога додаємо до поточного рейтингу рейтинг гри
                     {
-                        rating += item.GameRate;
+                        rating += item.WinnerGameRate;
                     }
                     else//якщо поразка
                     {
-                        if (item is OnePlayerRateGame)
-                        {
-                            rating = item.LoserAccountRate;
-                        }
-                        else
-                        {
-                            rating = rating - item.GameRate >= 1 ? rating -= item.GameRate : rating = 1;
-                        }
+                            rating = rating - item.LoserGameRate >= 1 ? rating -= item.LoserGameRate : rating = 1;
                     }
                 }
                 return rating;
@@ -83,11 +76,11 @@ namespace lab_2.GameAccounts
             {
                 if (item.WinnerAccount.UserName.Equals(UserName))
                 {
-                    gameReport.AppendLine($"{item.LoserAccount.UserName}\t\t{AllPossibleGameStatus.Victory}\t\t\t{item.CurrentGameType,-20}\t\t{item.GameRate}\t\t{item.GameId,5}\t\t{item.WinnerAccountRate,10}");//виводимо рядок інформації про поточну гру та користувача 
+                    gameReport.AppendLine($"{item.LoserAccount.UserName}\t\t{AllPossibleGameStatus.Victory}\t\t\t{item.CurrentGameType,-20}\t\t{item.WinnerGameRate}\t\t{item.GameId,5}\t\t{item.WinnerAccountRate,10}");//виводимо рядок інформації про поточну гру та користувача 
                 }
                 else
                 {
-                    gameReport.AppendLine($"{item.WinnerAccount.UserName}\t\t{AllPossibleGameStatus.Defeat}\t\t\t{item.CurrentGameType,-20}\t\t{item.GameRate}\t\t{item.GameId,5}\t\t{item.LoserAccountRate,10}");
+                    gameReport.AppendLine($"{item.WinnerAccount.UserName}\t\t{AllPossibleGameStatus.Defeat}\t\t\t{item.CurrentGameType,-20}\t\t{item.WinnerGameRate}\t\t{item.GameId,5}\t\t{item.LoserAccountRate,10}");
                 }
             }
             return gameReport.ToString();

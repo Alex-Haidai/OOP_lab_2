@@ -18,21 +18,15 @@ namespace lab_2.GameAccounts
                         winCounter++;//лічильник серії перемог
                         if (winCounter > 2)
                         {
-                            rating += item.GameRate * 2;//подвоюємо бали
+                            rating += item.WinnerGameRate * 2;//подвоюємо бали
                         }
-                        else { rating += item.GameRate; }
+                        else { rating += item.WinnerGameRate; }
                     }
                     else//якщо поразка
                     {
                         winCounter = 0;//обнуляємо лічильник
-                        if (item is OnePlayerRateGame)
-                        {
-                            rating = item.LoserAccountRate;
-                        }
-                        else
-                        {
-                            rating = rating - item.GameRate >= 1 ? rating -= item.GameRate : rating = 1;
-                        }
+                       
+                            rating = rating - item.LoserGameRate >= 1 ? rating -= item.LoserGameRate : rating = 1;
                     }
                 }
                 return rating;

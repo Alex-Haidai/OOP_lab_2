@@ -13,18 +13,11 @@ namespace lab_2.GameAccounts
                 {
                     if (item.WinnerAccount.Equals(this))//якщо перемога додаємо до поточного рейтингу рейтинг гри
                     {
-                        rating += item.GameRate;
+                        rating += item.WinnerGameRate;
                     }
                     else//якщо поразка
                     {
-                        if (item is OnePlayerRateGame)
-                        {
-                            rating = item.LoserAccountRate;
-                        }
-                        else
-                        {
-                            rating = rating - item.GameRate >= 1 ? rating -= item.GameRate / 2 : rating = 1;//при поразці знімається вдвічі менше балів
-                        }
+                            rating = rating - item.LoserGameRate >= 1 ? rating -= item.LoserGameRate / 2 : rating = 1;//при поразці знімається вдвічі менше балів
                     }
                 }
                 return rating;

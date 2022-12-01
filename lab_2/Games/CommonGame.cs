@@ -7,7 +7,8 @@ namespace lab_2.Games
         public CommonGame(BaseGameAccount firstAccount, BaseGameAccount secondAccount, int gameRate, AllPossibleGameStatus status)
             : base(firstAccount, secondAccount, status)
         {
-            GameRate = gameRate;
+            WinnerGameRate = gameRate;
+            LoserGameRate = gameRate;
             CurrentGameType = AllPossibleGameType.CommonGame;
         }
     }

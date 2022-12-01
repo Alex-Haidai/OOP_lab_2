@@ -22,7 +22,9 @@ namespace lab_2.Games
         public int GameId { get; }
         private static int gameUniqueIndex = 1;
         private int gameRating;
-        public int GameRate
+        public int WinnerAccountRate { get; set; }
+        public int LoserAccountRate { get; set; }
+        public int WinnerGameRate
         {
             get
             {
@@ -37,8 +39,7 @@ namespace lab_2.Games
                 else gameRating = value;
             }
         }
-        public int WinnerAccountRate { get; set; }
-        public virtual int LoserAccountRate { get; set; }
+        public int LoserGameRate { get; set; }
 
 
         public BaseGame(BaseGameAccount firstAccount, BaseGameAccount secondAccount, AllPossibleGameStatus status)//конструктор
